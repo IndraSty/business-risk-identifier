@@ -62,4 +62,32 @@ RESPONSE FORMAT:
     "industry_insights": "Industry-specific risk considerations"
 }"""
 
-    
+    def _build_user_prompt(self, document_input: DocumentInput) -> str:
+        """Build user prompt with document context"""
+        prompt = f"""
+DOCUMENT ANALYSIS REQUEST:
+
+Document Type: {document_input.document_type.value}
+Industry Context: {document_input.industry or 'General Business'}
+Company Scale: {document_input.company_scale.value}
+Analysis Focus: {document_input.analysis_focus or 'Comprehensive risk assessment'}
+
+DOCUMENT CONTENT:
+{document_input.document_content}
+
+SPECIFIC INSTRUCTIONS:
+1. Identify TOP {settings.default_max_risks} most significant risks
+2. Focus on risks with score ≥ {settings.min_risk_score_threshold}
+3. Prioritize {document_input.document_type.value.replace('_', ' ')} specific risks
+4. Consider {document_input.company_scale.value} company challenges
+"""
+
+        if document_input.industry:
+            prompt += f"5. Apply {document_input.industry} industry risk patterns\n"
+        
+        if document_input.analysis_focus:
+            prompt += f"6. Emphasize: {document_input.analysis_focus}\n"
+
+        prompt += "\nProvide analysis in the specified JSON format only."
+        
+        return prompt
