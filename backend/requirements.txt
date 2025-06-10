@@ -1,0 +1,30 @@
+# Core Framework
+fastapi==0.115.12
+uvicorn[standard]==0.34.3
+
+# OpenAI Integration
+openai==1.85.0
+
+# Data Validation & Serialization
+pydantic==2.11.5
+pydantic-settings==2.9.1
+
+# Environment Management
+python-dotenv==1.1.0
+
+# HTTP Client
+httpx==0.28.1
+
+# Utility Libraries
+python-multipart==0.0.20
+
+# Date/Time Handling
+python-dateutil==2.9.0
+
+# Logging and Monitoring
+loguru==0.7.3
+
+# Development Dependencies
+# (Optional, for development purposes)
+pytest==8.4.0
+pytest-asyncio==1.0.0
