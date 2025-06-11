@@ -89,3 +89,43 @@ class RiskController:
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail="An unexpected error occurred during analysis"
             )
+            
+    @staticmethod
+    async def get_analysis_stats() -> Dict[str, Any]:
+        """Get analysis statistics and system info"""
+        try:
+            # Get system health for context
+            health_data = await risk_analysis_engine.health_check()
+            
+            return {
+                "system_status": health_data["status"],
+                "supported_features": {
+                    "document_types": ["meeting_transcript", "business_plan"],
+                    "risk_categories": [
+                        "market", "operational", "financial",
+                        "regulatory", "strategic", "technology", "legal"
+                    ],
+                    "analysis_capabilities": [
+                        "Risk identification and scoring",
+                        "Industry-specific analysis",
+                        "Mitigation recommendations",
+                        "Evidence extraction",
+                        "Risk prioritization"
+                    ]
+                },
+                "configuration": {
+                    "max_risks_per_analysis": settings.default_max_risks,
+                    "min_risk_score_threshold": settings.min_risk_score_threshold,
+                    "model": settings.openai_model,
+                    "max_document_length": settings.max_document_length
+                },
+                "model_info": health_data.get("model_info", {}),
+                "last_updated": health_data.get("timestamp")
+            }
+            
+        except Exception as e:
+            logger.error(f"Failed to get analysis stats: {e}")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to retrieve analysis statistics"
+            )
