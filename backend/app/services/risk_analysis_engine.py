@@ -25,7 +25,7 @@ class RiskAnalysisEngine:
     def __init__(self):
         self.openai_service = openai_service
 
-    async def analyze_documents(
+    async def analyze_document(
         self, document_input: DocumentInput
     ) -> RiskAnalysisResponse:
         """Main method to perform complete risk analysis"""
