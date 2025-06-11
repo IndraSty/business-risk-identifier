@@ -91,3 +91,67 @@ SPECIFIC INSTRUCTIONS:
         prompt += "\nProvide analysis in the specified JSON format only."
         
         return prompt
+    
+    async def analyze_document_risks(self, document_input: DocumentInput) -> Dict[str, Any]:
+        """Main method to analyze document and identify risks"""
+        try:
+            logger.info(f"Starting risk analysis for document type: {document_input.document_type.value}, industry: {document_input.industry}, scale: {document_input.company_scale.value}")
+            
+            # Build prompts
+            system_prompt = self._build_system_prompt()
+            user_prompt = self._build_user_prompt(document_input)
+            
+            # Call OpenAI API
+            response = await self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                max_tokens=self.max_tokens,
+                temperature=self.temperature,
+                response_format={"type": "json_object"}
+            )
+            
+            # Parse Response
+            content = response.choices[0].message.content
+            risk_data = json.loads(content)
+            
+            logger.info(f"Successfully analyzed document, found {len(risk_data.get('identified_risks', []))} risks")
+            
+            return risk_data
+        
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse OpenAI JSON response: {e}")
+            raise ValueError("Invalid JSON response from AI model")
+        
+        except Exception as e:
+            logger.error(f"OpenAI API error: {e}")
+            raise RuntimeError(f"Risk analysis failed: {str(e)}")
+        
+    async def validate_api_connection(self) -> bool:
+        """Test OpenAI API connection"""
+        try:
+            response = await self.client.chat.completions.create(
+                model=self.model,
+                messages=[{"role": "user", "content": "Test connection"}],
+                max_tokens=10
+            )
+            logger.info("✅OpenAI API connection successful")
+            return True
+        except Exception as e:
+            logger.error(f"❌ OpenAI API connection failed: {e}")
+            return False
+        
+    def get_model_info(self) -> Dict[str, Any]:
+        """Get current model configuration"""
+        return {
+            "model": self.model,
+            "max_tokens": self.max_tokens,
+            "temperature": self.temperature,
+            "api_configured": bool(settings.openai_api_key)
+        }
+        
+
+# Global service instance
+openai_service = OpenAIService()
