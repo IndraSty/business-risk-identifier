@@ -37,9 +37,7 @@ class RiskAnalysisEngine:
             )
 
             # Step 1: Analyze document content
-            ai_response = await self.openai_service.analyze_document_risks(
-                document_input
-            )
+            ai_response = self.openai_service.analyze_document_risks(document_input)
 
             # Step 2: Process AI response into structured analysis
             document_analysis = self._create_document_analysis(document_input)
@@ -54,7 +52,7 @@ class RiskAnalysisEngine:
             # Step 4: Create final response object
             response = RiskAnalysisResponse(
                 document_analysis=document_analysis,
-                identified_risks=identified_risks,
+                identified_risk=identified_risks,
                 risk_summary=risk_summary,
                 processing_time=processing_time,
             )
@@ -106,7 +104,7 @@ class RiskAnalysisEngine:
                 )
 
                 # Filter out Low-score risks
-                if risk_score < settings.min_risk_score_threshold:
+                if risk_score < settings.DEFAULT_MIN_RISK_SCORE:
                     continue
 
                 # Create IdentifiedRisk object
@@ -137,7 +135,7 @@ class RiskAnalysisEngine:
         processed_risks.sort(key=lambda x: x.risk_score, reverse=True)
 
         # limit to max risks
-        return processed_risks[: settings.default_max_risks]
+        return processed_risks[: settings.DEFAULT_MAX_RISKS]
 
     def _create_risk_summary(
         self, risks: List[IdentifiedRisk], ai_response: Dict[str, Any]
@@ -248,7 +246,7 @@ class RiskAnalysisEngine:
         """Health check for the risk analysis engine"""
         try:
             # Test OpenAI connection
-            openai_status = await self.openai_service.validate_api_connection()
+            openai_status = self.openai_service.validate_api_connection()
 
             return {
                 "status": "healthy" if openai_status else "unhealthy",
