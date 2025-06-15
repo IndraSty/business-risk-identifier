@@ -134,9 +134,6 @@ async def process_file_upload(
 ):
     """
     Process uploaded file directly
-
-    This endpoint accepts direct file upload and extracts text content.
-    Supports PDF, TXT, DOCX files up to specified size limit.
     """
     start_time = time.time()
 
