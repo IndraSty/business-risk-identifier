@@ -29,8 +29,8 @@ export default function Navbar() {
   const navItems = [
     { name: 'Home', href: '#', icon: Bot },
     { name: 'Features', href: '#features', icon: FileText },
-    { name: 'Demo', href: '#demo', icon: BarChart3 },
     { name: 'About', href: '#about', icon: Users },
+    { name: 'Demo', href: '#demo', icon: BarChart3 },
   ];
 
   return (
@@ -101,18 +101,21 @@ export default function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              <Button
-                onClick={() => scrollToSection('demo')}
-                className={`px-6 py-2 rounded-xl font-semibold transition-all duration-200 ${
-                  isScrolled
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl'
-                    : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
-                }`}
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Try Analyze Now
-              </Button>
+                <Button
+                  onClick={() => scrollToSection('demo')}
+                  className={`px-6 py-2 rounded-xl font-semibold transition-all duration-200 ${
+                    isScrolled
+                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
+                  }`}
+                >
+                  Try Analyze Now
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
 

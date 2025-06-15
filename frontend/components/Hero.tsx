@@ -95,7 +95,7 @@ export default function Hero() {
             >
                 <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0 px-8 py-4 rounded-xl text-lg font-semibold shadow-2xl transform hover:scale-105 transition-all duration-200"
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white text-base border-0 px-8 py-4 rounded-xl font-semibold shadow-2xl transform hover:scale-105 transition-all duration-200"
                 onClick={scrollToDemo}
                 >
                 Try Analysis Now
@@ -104,7 +104,7 @@ export default function Hero() {
                 <Button 
                 variant="outline" 
                 size="lg"
-                className="border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-xl text-lg font-semibold backdrop-blur-sm"
+                className="border-white bg-transparent text-base text-white hover:text-white hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 px-8 py-4 rounded-xl font-semibold backdrop-blur-sm"
                 >
                 Learn More
                 </Button>
