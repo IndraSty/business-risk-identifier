@@ -15,7 +15,8 @@ class DocumentType(str, Enum):
 class CompanyScale(str, Enum):
     # Enum for company scale
     STARTUP = "startup"
-    SME = "sme"
+    SMALL = "small"
+    MEDIUM = "medium"
     ENTERPRISE = "enterprise"
 
 
@@ -69,7 +70,7 @@ class DocumentInput(BaseModel):
         description="Industry context for risk analysis",
     )
     company_scale: Optional[CompanyScale] = Field(
-        CompanyScale.SME,
+        ...,
         description="Scale/size of the company for risk analysis",
     )
     analysis_focus: Optional[str] = Field(
