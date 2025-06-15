@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     description: 'Identifikasi risiko bisnis secara otomatis dengan teknologi AI',
     type: 'website',
   },
+  icons: {
+    icon: '/icon.png',
+  }
 };
 
 export default function RootLayout({
