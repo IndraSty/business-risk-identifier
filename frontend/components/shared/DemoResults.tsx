@@ -350,15 +350,16 @@ const DemoResults: React.FC<DemoResultsProps> = (props) => {
                                   style={{
                                     backgroundColor: item.color,
                                     width: `${
-                                      (item.count /
-                                        (analyzeData?.risk_summary.total_risks || 0)) *
+                                      (Number(item.count) /
+                                        (analyzeData?.risk_summary
+                                          .total_risks || 0)) *
                                       100
                                     }%`,
                                   }}
                                 ></div>
                               </div>
                               <span className="text-sm font-bold w-6">
-                                {item.count}
+                                {`${item.count || 0}`}
                               </span>
                             </div>
                           </div>
