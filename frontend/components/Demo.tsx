@@ -116,7 +116,7 @@ export default function Demo() {
     }
   };
 
-  const validateFile = (file) => {
+  const validateFile = (file: File) => {
     // Check file size (max 10MB)
     if (file.size > 10 * 1024 * 1024) {
       return "File size must be less than 10MB";
