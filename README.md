@@ -15,6 +15,8 @@
 
 **Business Risk Identifier** is a comprehensive AI-powered platform that automatically identifies and analyzes potential business risks from various types of business documents. The platform combines advanced Natural Language Processing (NLP) and Machine Learning technologies to deliver accurate, fast, and actionable risk analysis for businesses of all sizes.
 
+You can see the *Product Overview* about this project [here](https://lnk.ink/risksight-ai) (Indonesian Languange)
+
 ### 🎯 Key Capabilities
 
 - 🔍 **Intelligent Document Analysis** - Process multiple document formats (PDF, DOCX, DOC, TXT)
