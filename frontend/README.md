@@ -322,9 +322,9 @@ We welcome contributions from the community! Here’s how you can contribute:
 
 If you encounter any issues or have questions:
 
-- **Email**: support@risksight-ai.com
-- **GitHub Issues**: [Create an issue](https://github.com/your-username/risksight-ai/issues)
-- **Documentation**: [Wiki](https://github.com/your-username/risksight-ai/wiki)
+- **Email**: indrastyawan0925@gmail.com
+- **GitHub Issues**: [Create an issue](https://github.com/IndraSty/business-risk-identifier/issues)
+- **Documentation**: [Wiki](https://github.com/IndraSty/business-risk-identifier/wiki)
 
 ## 📄 License
 
