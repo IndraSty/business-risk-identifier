@@ -40,6 +40,7 @@ python generate_api_key.py
 # Or generate manually in Python:
 python -c "import secrets; print('Your API Key:', secrets.token_urlsafe(32))"
 ```
+or use your'e custom API KEY
 
 ### 5. Create Environment File
 ```bash
