@@ -35,7 +35,6 @@ This project follows a modern full-stack architecture with clear separation of c
 business-risk-identifier/
 ├── frontend/          # Next.js React application
 ├── backend/           # FastAPI Python application
-├── docs/             # Documentation and guides
 ├── .github/          # GitHub workflows and templates
 └── README.md         # This file
 ```
@@ -112,22 +111,28 @@ npm run dev
 - [Frontend Setup & Features](./frontend/README.md)
 - [Backend API Setup & Configuration](./backend/README.md)
 - [API Documentation](http://localhost:8000/docs) (when running)
-- [Contributing Guidelines](CONTRIBUTING.md)
 
 ### Project Structure
 ```
 business-risk-identifier/
 ├── frontend/
-│   ├── components/          # React components
-│   ├── pages/              # Next.js pages
+│   ├── components/         # React components
+│   ├── app/                # Next.js pages
 │   ├── styles/             # Global styles
-│   ├── utils/              # Helper functions
+│   ├── lib/                # Helper functions
+│   ├── constants/          # Application constants and configuration
+│   ├── context/            # React context providers
+│   ├── services/           # Business logic and API services
+│   ├── types/              # TypeScript type definitions
+│   ├── hooks/              # Custom React hooks
 │   └── README.md           # Frontend documentation
 ├── backend/
 │   ├── app/
 │   │   ├── api/            # API routes
-│   │   ├── core/           # Core functionality
+│   │   ├── config/         # Core functionality
 │   │   ├── models/         # Data models
+│   │   ├── controllers/    # business logic controllers
+│   │   ├── utils/          # Helper functions
 │   │   └── services/       # Business logic
 │   ├── requirements.txt    # Python dependencies
 │   └── README.md           # Backend documentation
@@ -163,8 +168,8 @@ business-risk-identifier/
 ## 🌐 Demo
 
 ### Live Demo
-- **Frontend Demo**: [https://your-frontend-demo.vercel.app](https://your-frontend-demo.vercel.app)
-- **API Endpoint**: [https://your-backend-demo.railway.app](https://your-backend-demo.railway.app)
+- **Frontend Demo**: [RiskSight AI](https://business-risk-identifier-5fl2.vercel.app/)
+- **API Endpoint**: [https://business-risk-identifier-production-2b64.up.railway.app](https://business-risk-identifier-production-2b64.up.railway.app/)
 
 ### Example Usage
 ```bash
@@ -240,16 +245,20 @@ We welcome contributions from the community! Here's how you can help:
 - ✅ PDF report generation
 - ✅ Basic authentication system
 
-### Phase 2 (In Progress) 🔄
-- 🔄 Enhanced AI models and accuracy improvements
-- 🔄 User authentication and account management
-- 🔄 Document history and project management
-- 🔄 Advanced analytics and trending
-- 🔄 Email notifications and alerts
-- 🔄 API rate limiting and monitoring
+### Phase 2 (Current) ✅
+- ✅ Upload File (PDF, DOCS, TXT)
+- ✅ Extract Text from File
+- ✅ Analyze Extracted Text
+- ✅ Send Analyze Results
+- ✅ Export Results to CSV/JSON/PDF
+- ✅ Enhanced AI models and accuracy improvements
 
 ### Phase 3 (Planned) 📋
 - 📋 Multi-language support
+- 📋 User authentication and account management
+- 📋 Document history and project management
+- 📋 Advanced analytics and trending
+- 📋 Email notifications and alerts
 - 📋 Team collaboration features
 - 📋 Advanced dashboard customization
 - 📋 Third-party integrations (Slack, Teams, etc.)
